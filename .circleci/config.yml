@@ -32,11 +32,6 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
-  three:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - hello/hello-build
       
 workflows:
   version: 2.1
@@ -46,4 +41,4 @@ workflows:
       - two:
           requires:
             - one
-      - three
+      - hello/hello-build
