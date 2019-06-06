@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+    hello: circleci/hello-build@0.0.7
 jobs:
   one:
     docker:
@@ -30,11 +32,16 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
+  three:
+    steps:
+      - hello/hello-build
+      
 workflows:
-  version: 2
-  one_and_two:
+  version: 2.1
+  Name_of_the_workflow:
     jobs:
       - one
       - two:
           requires:
             - one
+      - three
